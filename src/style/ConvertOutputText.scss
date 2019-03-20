@@ -1,0 +1,53 @@
+@import "./theme";
+
+$borderRadius: 40px;
+$borderRadiusSmall: 20px;
+$outputTextAreaMargin: 30px;
+$buttonPadding: 10px;
+$buttonHeight: 40px;
+
+.textOutputContainer {
+    display: flex;
+    justify-content: center;
+    //padding: $textOutputContainerPadding;
+    //width: 800px - (2 * $outputTextAreaMargin);
+    width: 100%;
+    position: relative;
+}
+
+.textOutputContainer textarea {
+    margin: ($outputTextAreaMargin / 2) $outputTextAreaMargin $outputTextAreaMargin $outputTextAreaMargin;
+    padding: 20px;
+    border-radius: $borderRadius $borderRadius $borderRadius 0;
+    width: 100%;
+    min-height: 150px;
+}
+
+.buttonContainer {
+    position: absolute;
+    left: $outputTextAreaMargin;
+    bottom: 0 + $outputTextAreaMargin;
+
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    float: left;
+    padding: $buttonPadding;
+    height: $buttonHeight - (2 * $buttonPadding);
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: $primaryColor;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: $secondaryColor;
+}
+
+.button--variant-right {
+    border-radius: 0 $borderRadiusSmall 0 0;
+}

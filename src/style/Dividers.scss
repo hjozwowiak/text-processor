@@ -1,0 +1,20 @@
+
+$dividersTextAreaPadding: 20px;
+.dividersContainer {
+    margin: 15px 30px;
+}
+
+.dividersTextArea {
+    width: 50%;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.dividersTextArea--variant-divider {
+    border-radius: 25px 0 0 25px;
+}
+
+.dividersTextArea--variant-connector {
+    border-radius: 0 25px 25px 0;
+}

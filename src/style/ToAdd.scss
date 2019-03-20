@@ -1,0 +1,19 @@
+.toAddContainer {
+    display: flex;
+    margin: 15px 30px;
+}
+
+.toAddTextArea {
+    width: 50%;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.toAddTextArea--variant-start {
+    border-radius: 25px 0 0 25px;
+}
+
+.toAddTextArea--variant-end {
+    border-radius: 0 25px 25px 0;
+}

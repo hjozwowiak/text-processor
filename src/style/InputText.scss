@@ -1,0 +1,15 @@
+$borderRadius: 40px;
+
+.textInputContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.textInputContainer textarea {
+    margin: 30px 30px 15px 30px;
+    padding: 20px;
+    border-radius: $borderRadius;
+    width: 100%;
+    min-height: 150px;
+}
