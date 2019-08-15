@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 // Components
-import InputText from './components/InputText';
-import ConvertOutputText from './components/ConvertOutputText';
-import Dividers from './components/Dividers';
-import ToRemove from './components/ToRemove';
-import ToAdd from './components/ToAdd';
-import Checkboxes from './components/Checkboxes';
+import ContainerInput from './components/ContainerInput';
+import ContainerModifiers from './components/ContainerModifiers';
+import ContainerOutputTrigger from './components/ContainerOutputTrigger';
 // Styles
 import './style/App.scss';
-import './style/InputText.scss';
-import './style/ConvertOutputText.scss';
 import './style/Dividers.scss';
 import './style/ToRemove.scss';
 import './style/ToAdd.scss';
@@ -21,29 +16,42 @@ import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-s
 library.add(faArrowCircleLeft, faArrowCircleRight)
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {text: ''}
+  state = {
+    input: '',
+    output: '',
+    divider: '',
+    connector: '',
+    toRemoveStartEnd: '',
+    toRemoveEntireString: '',
+    toRemoveEntireSingle: ''
   }
 
   render() {
-    const currentText = text => {this.state.text = text};
+    const {input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle} = this.state;
+
+    const runMod = () => {
+      this.setState({output: input});
+    }
 
     return (
-      <div className="App">
-        <InputText onTextChange={currentText} />
-        <div className="modifiersContainer">
-          <div className="colNarrow">
-            <Dividers />
-            <ToRemove />
-          </div>
-          <div className="colWide">
-            <ToAdd />
-            <Checkboxes />
-          </div>
-        </div>
-        <ConvertOutputText outputText={this.state.currentText} />
+      <div className='App'>
+        <ContainerInput
+          input={input}
+          updateInput={(value => this.setState({input: value}))} />
+        <ContainerModifiers
+          divider={divider}
+          updateDivider={(divider => this.setState({divider}))}
+          connector={connector}
+          updateConnector={(connector => this.setState({connector}))}
+          toRemoveStartEnd={toRemoveStartEnd}
+          updateToRemoveStartEnd={(toRemoveStartEnd => this.setState({toRemoveStartEnd}))}
+          toRemoveEntireString={toRemoveEntireString}
+          updateToRemoveEntireString={(toRemoveEntireString => this.setState({toRemoveEntireString}))}
+          toRemoveEntireSingle={toRemoveEntireSingle}
+          updateToRemoveEntireSingle={(toRemoveEntireSingle => this.setState({toRemoveEntireSingle}))} />
+        <ContainerOutputTrigger
+          output={output}
+          runMod={runMod} />
       </div>
     );
   }

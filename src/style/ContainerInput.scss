@@ -1,12 +1,12 @@
-$borderRadius: 40px;
+@import './_theme.scss';
 
-.textInputContainer {
+.ContainerInput {
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.textInputContainer textarea {
+.ContainerInput textarea {
     margin: 30px 30px 15px 30px;
     padding: 20px;
     border-radius: $borderRadius;

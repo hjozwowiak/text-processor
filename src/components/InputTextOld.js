@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class InputText extends Component {
+class InputTextOld extends Component {
 
     constructor(props) {
         super(props);
@@ -22,4 +22,4 @@ class InputText extends Component {
     }
 }
 
-export default InputText;
+export default InputTextOld;
