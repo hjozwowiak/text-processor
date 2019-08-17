@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ContainerOutputTrigger = props => {
     return(
         <div className="ContainerOutputTrigger">
-            <TextAreaPassive value={props.output} />
+            <TextAreaPassive
+                value={props.output} />
             <div className="buttonContainer">
                 <Button
                     additionalClass='button--variant-convert'

@@ -1,11 +1,17 @@
+@import './theme';
+
 .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
   width: 800px;
-  text-align: center;
-  background-color: #282c34;
+  background-color: $mainTheme;
+}
+
+hr {
+  border: 1px solid $additionalTheme;
+  width: 100%;
 }
 
 .colNarrow {

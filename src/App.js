@@ -7,13 +7,11 @@ import ContainerOutputTrigger from './components/ContainerOutputTrigger';
 import './style/App.scss';
 import './style/Dividers.scss';
 import './style/ToRemove.scss';
-import './style/ToAdd.scss';
-import './style/Checkboxes.scss';
 // Font Awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
-library.add(faArrowCircleLeft, faArrowCircleRight)
+import { library } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowCircleLeft, faArrowCircleRight);
 
 class App extends Component {
   state = {
@@ -23,14 +21,23 @@ class App extends Component {
     connector: '',
     toRemoveStartEnd: '',
     toRemoveEntireString: '',
-    toRemoveEntireSingle: ''
+    toRemoveEntireSingle: '',
+    toAddStart: '',
+    toAddEnd: '',
+    replace: false,
+    removeDiacritics: false,
+    removeEmptyPhrases: false,
+    caps: '',
+    test: 'test1'
   }
 
   render() {
-    const {input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle} = this.state;
+    const {input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle, toAddStart, toAddEnd, replace, removeDiacritics, removeEmptyPhrases, caps} = this.state;
 
     const runMod = () => {
-      this.setState({output: input});
+      let phrasesArray = input.split(divider);
+
+      this.setState({output: phrasesArray.join(connector)});
     }
 
     return (
@@ -48,9 +55,22 @@ class App extends Component {
           toRemoveEntireString={toRemoveEntireString}
           updateToRemoveEntireString={(toRemoveEntireString => this.setState({toRemoveEntireString}))}
           toRemoveEntireSingle={toRemoveEntireSingle}
-          updateToRemoveEntireSingle={(toRemoveEntireSingle => this.setState({toRemoveEntireSingle}))} />
+          updateToRemoveEntireSingle={(toRemoveEntireSingle => this.setState({toRemoveEntireSingle}))}
+          toAddStart={toAddStart}
+          updateToAddStart={(toAddStart => this.setState({toAddStart}))}
+          toAddEnd={toAddEnd}
+          updateToAddEnd={(toAddEnd => this.setState({toAddEnd}))}
+          replace={replace}
+          updateReplace={(replace => this.setState({replace}))}
+          removeDiacritics={removeDiacritics}
+          updateRemoveDiacritics={(removeDiacritics => this.setState({removeDiacritics}))}
+          removeEmptyPhrases={removeEmptyPhrases}
+          updateRemoveEmptyPhrases={(removeEmptyPhrases => this.setState({removeEmptyPhrases}))}
+          caps={caps}
+          updateCaps={(caps => this.setState({caps}))} />
         <ContainerOutputTrigger
           output={output}
+          updateOutput={(output => this.setState({output}))}
           runMod={runMod} />
       </div>
     );

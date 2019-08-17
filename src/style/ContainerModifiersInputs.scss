@@ -1,7 +1,9 @@
-.checkboxesContainer {
+.ContainerModifiersInputs {
     display: flex;
+    flex-direction: column;
+    flex: 1;
     background-color: #fff;
     margin: 15px 30px;
-    flex: 1;
+    padding: 10px;
     border-radius: 25px;
 }
