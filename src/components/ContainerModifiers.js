@@ -1,45 +1,71 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ContainerModifiersDividers from './ContainerModifiersDividers';
 import ContainerModifiersToRemove from './ContainerModifiersToRemove';
 import ContainerModifiersInputs from './ContainerModifiersInputs';
 import ContainerModifiersToAdd from './ContainerModifiersToAdd';
 import '../style/ContainerModifiers.scss';
 
-const ContainerModifiers = props => {
+const ContainerModifiers = ({divider, updateDivider, connector, updateConnector, toRemoveStartEnd, updateToRemoveStartEnd, toRemoveEntireString, updateToRemoveEntireString, toRemoveEntireSingle, updateToRemoveEntireSingle, toAddStart, updateToAddStart, toAddEnd, updateToAddEnd, replace, updateReplace, removeDiacritics, updateRemoveDiacritics, removeEmptyPhrases, updateRemoveEmptyPhrases, caps, updateCaps}) => {
     return(
         <div className="ContainerModifiers">
             <div className='colNarrow'>
                 <ContainerModifiersDividers
-                    divider={props.divider}
-                    updateDivider={props.updateDivider}
-                    connector={props.connector}
-                    updateConnector={props.updateConnector} />
+                    divider={divider}
+                    updateDivider={updateDivider}
+                    connector={connector}
+                    updateConnector={updateConnector} />
                 <ContainerModifiersToRemove
-                    toRemoveStartEnd={props.toRemoveStartEnd}
-                    updateToRemoveStartEnd={props.updateToRemoveStartEnd}
-                    toRemoveEntireString={props.toRemoveEntireString}
-                    updateToRemoveEntireString={props.updateToRemoveEntireString}
-                    toRemoveEntireSingle={props.toRemoveEntireSingle}
-                    updateToRemoveEntireSingle={props.updateToRemoveEntireSingle} />
+                    toRemoveStartEnd={toRemoveStartEnd}
+                    updateToRemoveStartEnd={updateToRemoveStartEnd}
+                    toRemoveEntireString={toRemoveEntireString}
+                    updateToRemoveEntireString={updateToRemoveEntireString}
+                    toRemoveEntireSingle={toRemoveEntireSingle}
+                    updateToRemoveEntireSingle={updateToRemoveEntireSingle} />
             </div>
             <div className='colWide'>
                 <ContainerModifiersToAdd
-                    toAddStart={props.toAddStart}
-                    updateToAddStart={props.updateToAddStart}
-                    toAddEnd={props.toAddEnd}
-                    updateToAddEnd={props.updateToAddEnd} />
+                    toAddStart={toAddStart}
+                    updateToAddStart={updateToAddStart}
+                    toAddEnd={toAddEnd}
+                    updateToAddEnd={updateToAddEnd} />
                 <ContainerModifiersInputs
-                    replace={props.replace}
-                    updateReplace={props.updateReplace}
-                    removeDiacritics={props.removeDiacritics}
-                    updateRemoveDiacritics={props.updateRemoveDiacritics}
-                    removeEmptyPhrases={props.removeEmptyPhrases}
-                    updateRemoveEmptyPhrases={props.updateRemoveEmptyPhrases}
-                    caps={props.caps}
-                    updateCaps={props.updateCaps} />
+                    replace={replace}
+                    updateReplace={updateReplace}
+                    removeDiacritics={removeDiacritics}
+                    updateRemoveDiacritics={updateRemoveDiacritics}
+                    removeEmptyPhrases={removeEmptyPhrases}
+                    updateRemoveEmptyPhrases={updateRemoveEmptyPhrases}
+                    caps={caps}
+                    updateCaps={updateCaps} />
             </div>
         </div>
     )
+}
+
+ContainerModifiers.propTypes = {
+    divider: PropTypes.string,
+    updateDivider: PropTypes.func,
+    connector: PropTypes.string,
+    updateConnector: PropTypes.func,
+    toRemoveStartEnd: PropTypes.string,
+    updateToRemoveStartEnd: PropTypes.func,
+    toRemoveEntireString: PropTypes.string,
+    updateToRemoveEntireString: PropTypes.func,
+    toRemoveEntireSingle: PropTypes.string,
+    updateToRemoveEntireSingle: PropTypes.func,
+    toAddStart: PropTypes.string,
+    updateToAddStart: PropTypes.func,
+    toAddEnd: PropTypes.string,
+    updateToAddEnd: PropTypes.func,
+    replace: PropTypes.bool,
+    updateReplace: PropTypes.func,
+    removeDiacritics: PropTypes.bool,
+    updateRemoveDiacritics: PropTypes.func,
+    removeEmptyPhrases: PropTypes.bool,
+    updateRemoveEmptyPhrases: PropTypes.func,
+    caps: PropTypes.string,
+    updateCaps: PropTypes.func
 }
 
 export default ContainerModifiers;

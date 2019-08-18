@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import '../style/TextArea.scss';
 
 class TextArea extends Component {
@@ -23,6 +24,11 @@ class TextArea extends Component {
                 />
         );
     }
+}
+
+TextArea.propTypes = {
+    targetClass: PropTypes.string,
+    callbackValue: PropTypes.func
 }
 
 export default TextArea;

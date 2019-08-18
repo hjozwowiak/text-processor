@@ -1,14 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../style/TextArea.scss';
 
-const TextAreaPassive = props => {
+const TextAreaPassive = ({targetClass, value}) => {
     return(
         <textarea
-            className={props.targetClass}
-            value={props.value}
+            className={targetClass}
+            value={value}
             readOnly
             />
     );
+}
+
+TextAreaPassive.propTypes = {
+    targetClass: PropTypes.string,
+    value: PropTypes.string
 }
 
 export default TextAreaPassive;
