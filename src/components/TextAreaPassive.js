@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../style/TextArea.scss';
 
-const TextAreaPassive = ({targetClass, value}) => {
+const TextAreaPassive = ({targetClasses = [], value}) => {
     return(
         <textarea
-            className={targetClass}
+            className={targetClasses.join(' ')}
             value={value}
             readOnly
             />

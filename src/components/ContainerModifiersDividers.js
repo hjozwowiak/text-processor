@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextArea from './TextArea';
-import '../style/ContainerModifiersDividers.scss';
 
 const ContainerModifiersDividers = ({divider, updateDivider, connector, updateConnector}) => {
     return(
-        <div className="ContainerModifiersDividers">
+        <div className='container--section'>
             <TextArea
-                targetClass='dividersTextArea--variant-divider'
+                targetClasses={['input--textarea-small','container-borderRoundTopLeftMedium','container-borderRoundBottomLeftMedium']}
                 divider={divider}
                 callbackValue={updateDivider} />
             <TextArea
-                targetClass='dividersTextArea--variant-connector'
+                targetClasses={['input--textarea-small','container-borderRoundTopRightMedium','container-borderRoundBottomRightMedium']}
                 connector={connector}
                 callbackValue={updateConnector} />
         </div>

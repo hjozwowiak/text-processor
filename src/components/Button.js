@@ -5,11 +5,13 @@ class Button extends Component {
     state = {};
 
     render() {
-        const {additionalClass, description, trigger} = this.props;
+        const {targetClasses, description, trigger} = this.props;
+        let classes = '';
+        if(targetClasses) { classes = targetClasses.join(' ') };
 
         return(
             <div
-                className={`button ${additionalClass}`}
+                className={classes}
                 onClick={trigger} >
                 {description}
             </div>
@@ -18,7 +20,7 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-    additionalClass: PropTypes.string,
+    targetClasses: PropTypes.array,
     description: PropTypes.node,
     trigger: PropTypes.func
 }

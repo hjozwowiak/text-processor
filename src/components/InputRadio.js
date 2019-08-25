@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import '../style/InputRadio.scss';
 
 class InputRadio extends Component {
     state = { selected: '' };
 
     render() {
         const {selected} = this.state;
-        const {number, descriptions, name, targetClass, callbackValue} = this.props;
+        const {targetClasses, number, descriptions, name, callbackValue} = this.props;
+        let classes = '';
+        if(targetClasses) { classes = targetClasses.join(' ') };
 
         const handleChange = event => {
             if(callbackValue) {callbackValue(event.target.value)};
@@ -18,7 +19,7 @@ class InputRadio extends Component {
 
         for(let i = 0; i < number; i++) {
             result.push(
-                <div className={`InputRadio ${targetClass}`} key={`${name}-${i}`} >
+                <div className={classes} key={`${name}-${i}`} >
                     <input
                         type='radio'
                         name={name}
@@ -39,8 +40,8 @@ class InputRadio extends Component {
 }
 
 InputRadio.propTypes = {
+    targetClasses: PropTypes.array,
     descriptions: PropTypes.array,
-    targetClass: PropTypes.string,
     callbackValue: PropTypes.func
 }
 

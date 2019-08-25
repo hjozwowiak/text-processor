@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import '../style/TextArea.scss';
 
 class TextArea extends Component {
     state = {
@@ -9,7 +8,9 @@ class TextArea extends Component {
 
     render() {
         const {value} = this.state;
-        const {targetClass, callbackValue} = this.props;
+        const {targetClasses, callbackValue} = this.props;
+        let classes = '';
+        if(targetClasses) { classes = targetClasses.join(' ') };
 
         const handleChange = event => {
             if(callbackValue) {callbackValue(event.target.value)};
@@ -18,7 +19,7 @@ class TextArea extends Component {
 
         return(
             <textarea
-                className={targetClass}
+                className={classes}
                 value={value}
                 onChange={handleChange}
                 />
@@ -27,7 +28,7 @@ class TextArea extends Component {
 }
 
 TextArea.propTypes = {
-    targetClass: PropTypes.string,
+    targetClasses: PropTypes.array,
     callbackValue: PropTypes.func
 }
 

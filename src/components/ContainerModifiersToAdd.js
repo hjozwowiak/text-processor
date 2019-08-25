@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextArea from './TextArea';
-import '../style/ContainerModifiersToAdd.scss';
 
 const ContainerModifiersToAdd = ({toAddStart, updateToAddStart, toAddEnd, updateToAddEnd}) => {
     return(
-        <div className="ContainerModifiersToAdd">
+        <div className="container--section">
             <TextArea
-                targetClass='ContainerModifiersToAdd--variant-start'
+                targetClasses={['input--textarea-small','container-borderRoundTopLeftMedium','container-borderRoundBottomLeftMedium']}
                 toAddStart={toAddStart}
                 callbackValue={updateToAddStart} />
             <TextArea
-                targetClass='ContainerModifiersToAdd--variant-end'
+                targetClasses={['input--textarea-small','container-borderRoundTopRightMedium','container-borderRoundBottomRightMedium']}
                 toAddEnd={toAddEnd}
                 callbackValue={updateToAddEnd} />
         </div>

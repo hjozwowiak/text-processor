@@ -4,12 +4,11 @@ import ContainerModifiersDividers from './ContainerModifiersDividers';
 import ContainerModifiersToRemove from './ContainerModifiersToRemove';
 import ContainerModifiersInputs from './ContainerModifiersInputs';
 import ContainerModifiersToAdd from './ContainerModifiersToAdd';
-import '../style/ContainerModifiers.scss';
 
 const ContainerModifiers = ({divider, updateDivider, connector, updateConnector, toRemoveStartEnd, updateToRemoveStartEnd, toRemoveEntireString, updateToRemoveEntireString, toRemoveEntireSingle, updateToRemoveEntireSingle, toAddStart, updateToAddStart, toAddEnd, updateToAddEnd, replace, updateReplace, removeDiacritics, updateRemoveDiacritics, removeEmptyPhrases, updateRemoveEmptyPhrases, caps, updateCaps}) => {
     return(
-        <div className="ContainerModifiers">
-            <div className='colNarrow'>
+        <div className="container--row">
+            <div className='container--column-narrow container-directionColumn'>
                 <ContainerModifiersDividers
                     divider={divider}
                     updateDivider={updateDivider}
@@ -23,7 +22,7 @@ const ContainerModifiers = ({divider, updateDivider, connector, updateConnector,
                     toRemoveEntireSingle={toRemoveEntireSingle}
                     updateToRemoveEntireSingle={updateToRemoveEntireSingle} />
             </div>
-            <div className='colWide'>
+            <div className='container--column-wide container-directionColumn'>
                 <ContainerModifiersToAdd
                     toAddStart={toAddStart}
                     updateToAddStart={updateToAddStart}

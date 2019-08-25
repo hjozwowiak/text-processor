@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextArea from './TextArea';
-import '../style/ContainerModifiersToRemove.scss';
 
 const ContainerModifiersToRemove = ({toRemoveStartEnd, updateToRemoveStartEnd, toRemoveEntireString, updateToRemoveEntireString, toRemoveEntireSingle, updateToRemoveEntireSingle}) => {
     return(
-        <div className="toRemoveContainer ContainerModifiersToRemove">
+        <div className='container--section container-directionColumn'>
             <TextArea
-                targetClass='toRemoveTextArea--variant-startEnd'
+                targetClasses={['input--textarea-small','container-borderRoundTopLeftMedium','container-borderRoundTopRightMedium']}
                 toRemoveStartEnd={toRemoveStartEnd}
                 callbackValue={updateToRemoveStartEnd} />
             <TextArea
-                targetClass='toRemoveTextArea--variant-entireString'
+                targetClasses={['input--textarea-small']}
                 toRemoveEntireString={toRemoveEntireString}
                 callbackValue={updateToRemoveEntireString} />
             <TextArea
-                targetClass='toRemoveTextArea--variant-entireSingle'
+                targetClasses={['input--textarea-small','container-borderRoundBottomLeftMedium','container-borderRoundBottomRightMedium']}
                 toRemoveEntireSingle={toRemoveEntireSingle}
                 callbackValue={updateToRemoveEntireSingle} />
         </div>

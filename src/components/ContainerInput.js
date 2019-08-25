@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextArea from './TextArea';
-import '../style/ContainerInput.scss';
 
 const ContainerInput = ({input, updateInput}) => {
     return(
-        <div className='ContainerInput'>
+        <div className='container--section'>
             <TextArea
+                targetClasses={['input--textarea-large','container-borderRoundTopLeftLarge','container-borderRoundTopRightLarge','container-borderRoundBottomRightLarge','container-borderRoundBottomLeftLarge']}
                 input={input}
                 callbackValue={updateInput} />
         </div>

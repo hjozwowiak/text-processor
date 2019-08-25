@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import '../style/InputCheckbox.scss';
 
 class InputCheckbox extends Component {
     state = { checked: false };
 
     render() {
         const {checked} = this.state;
-        const {description, targetClass, callbackValue} = this.props;
+        const {targetClasses, description, callbackValue} = this.props;
+        let classes = '';
+        if(targetClasses) { classes = targetClasses.join(' ') };
 
         const handleChange = event => {
             if(callbackValue) {callbackValue(event.target.checked)};
@@ -15,7 +16,7 @@ class InputCheckbox extends Component {
         }
 
         return(
-            <div className={`InputCheckbox ${targetClass}`}>
+            <div className={classes}>
                 <input
                     type='checkbox'
                     checked={checked}
@@ -28,8 +29,8 @@ class InputCheckbox extends Component {
 }
 
 InputCheckbox.propTypes = {
+    targetClasses: PropTypes.array,
     description: PropTypes.string,
-    targetClass: PropTypes.string,
     callbackValue: PropTypes.func
 }
 
