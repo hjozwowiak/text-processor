@@ -6,11 +6,11 @@ const ContainerModifiersToAdd = ({toAddStart, updateToAddStart, toAddEnd, update
     return(
         <div className="container--section">
             <TextArea
-                targetClasses={['input--textarea-small','container-borderRoundTopLeftMedium','container-borderRoundBottomLeftMedium']}
+                targetClasses={['input--textarea-medium','container-borderRoundTopLeftMedium','container-borderRoundBottomLeftMedium']}
                 toAddStart={toAddStart}
                 callbackValue={updateToAddStart} />
             <TextArea
-                targetClasses={['input--textarea-small','container-borderRoundTopRightMedium','container-borderRoundBottomRightMedium']}
+                targetClasses={['input--textarea-medium','container-borderRoundTopRightMedium','container-borderRoundBottomRightMedium']}
                 toAddEnd={toAddEnd}
                 callbackValue={updateToAddEnd} />
         </div>

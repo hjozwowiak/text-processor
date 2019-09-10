@@ -17,11 +17,19 @@ class TextArea extends Component {
             this.setState({value: event.target.value});
         }
 
+        const handleKeyDown = event => {
+            if(event.key === 'Tab') {
+                event.preventDefault();
+                this.setState({value: value.substring(0, event.target.selectionStart) + '\t' + value.substring(event.target.selectionEnd)})
+            }
+        }
+
         return(
             <textarea
                 className={classes}
                 value={value}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 />
         );
     }

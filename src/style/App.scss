@@ -9,6 +9,10 @@ hr {
     width: 100%;
 }
 
+.hide {
+    display: none !important;
+}
+
 .container {
     display: flex;
 
@@ -147,6 +151,12 @@ hr {
         width: 100%;
 
         &-small {
+            @extend .input--textarea;
+            padding: 5px;
+            height: 30px;
+        }
+
+        &-medium {
             @extend .input--textarea;
             padding: 10px;
             height: 50px;

@@ -5,7 +5,7 @@ import ContainerModifiersToRemove from './ContainerModifiersToRemove';
 import ContainerModifiersInputs from './ContainerModifiersInputs';
 import ContainerModifiersToAdd from './ContainerModifiersToAdd';
 
-const ContainerModifiers = ({divider, updateDivider, connector, updateConnector, toRemoveStartEnd, updateToRemoveStartEnd, toRemoveEntireString, updateToRemoveEntireString, toRemoveEntireSingle, updateToRemoveEntireSingle, toAddStart, updateToAddStart, toAddEnd, updateToAddEnd, replace, updateReplace, removeDiacritics, updateRemoveDiacritics, removeEmptyPhrases, updateRemoveEmptyPhrases, caps, updateCaps}) => {
+const ContainerModifiers = ({divider, updateDivider, connector, updateConnector, toRemoveStartEnd, updateToRemoveStartEnd, toRemoveEntireString, updateToRemoveEntireString, toRemoveEntireSingle, updateToRemoveEntireSingle, toAddStart, updateToAddStart, toAddEnd, updateToAddEnd, replace, updateReplace, toReplace, updateToReplace, toReplaceWith, updateToReplaceWith, removeDiacritics, updateRemoveDiacritics, removeEmptyPhrases, updateRemoveEmptyPhrases, letterCase, updateLetterCase}) => {
     return(
         <div className="container--row">
             <div className='container--column-narrow container-directionColumn'>
@@ -31,12 +31,16 @@ const ContainerModifiers = ({divider, updateDivider, connector, updateConnector,
                 <ContainerModifiersInputs
                     replace={replace}
                     updateReplace={updateReplace}
+                    toReplace={toReplace}
+                    updateToReplace={updateToReplace}
+                    toReplaceWith={toReplaceWith}
+                    updateToReplaceWith={updateToReplaceWith}
                     removeDiacritics={removeDiacritics}
                     updateRemoveDiacritics={updateRemoveDiacritics}
                     removeEmptyPhrases={removeEmptyPhrases}
                     updateRemoveEmptyPhrases={updateRemoveEmptyPhrases}
-                    caps={caps}
-                    updateCaps={updateCaps} />
+                    letterCase={letterCase}
+                    updateLetterCase={updateLetterCase} />
             </div>
         </div>
     )
@@ -59,12 +63,16 @@ ContainerModifiers.propTypes = {
     updateToAddEnd: PropTypes.func,
     replace: PropTypes.bool,
     updateReplace: PropTypes.func,
+    toReplace: PropTypes.string,
+    updateToReplace: PropTypes.func,
+    toReplaceWith: PropTypes.string,
+    updateToReplaceWith: PropTypes.func,
     removeDiacritics: PropTypes.bool,
     updateRemoveDiacritics: PropTypes.func,
     removeEmptyPhrases: PropTypes.bool,
     updateRemoveEmptyPhrases: PropTypes.func,
-    caps: PropTypes.string,
-    updateCaps: PropTypes.func
+    letterCase: PropTypes.string,
+    updateLetterCase: PropTypes.func
 }
 
 export default ContainerModifiers;

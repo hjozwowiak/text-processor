@@ -6,15 +6,15 @@ const ContainerModifiersToRemove = ({toRemoveStartEnd, updateToRemoveStartEnd, t
     return(
         <div className='container--section container-directionColumn'>
             <TextArea
-                targetClasses={['input--textarea-small','container-borderRoundTopLeftMedium','container-borderRoundTopRightMedium']}
+                targetClasses={['input--textarea-medium','container-borderRoundTopLeftMedium','container-borderRoundTopRightMedium']}
                 toRemoveStartEnd={toRemoveStartEnd}
                 callbackValue={updateToRemoveStartEnd} />
             <TextArea
-                targetClasses={['input--textarea-small']}
+                targetClasses={['input--textarea-medium']}
                 toRemoveEntireString={toRemoveEntireString}
                 callbackValue={updateToRemoveEntireString} />
             <TextArea
-                targetClasses={['input--textarea-small','container-borderRoundBottomLeftMedium','container-borderRoundBottomRightMedium']}
+                targetClasses={['input--textarea-medium','container-borderRoundBottomLeftMedium','container-borderRoundBottomRightMedium']}
                 toRemoveEntireSingle={toRemoveEntireSingle}
                 callbackValue={updateToRemoveEntireSingle} />
         </div>

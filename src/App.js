@@ -23,18 +23,69 @@ class App extends Component {
     toAddStart: '',
     toAddEnd: '',
     replace: false,
+    toReplace: '',
+    toReplaceWith: '',
     removeDiacritics: false,
     removeEmptyPhrases: false,
-    caps: ''
+    letterCase: ''
   };
 
   render() {
-    const {input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle, toAddStart, toAddEnd, replace, removeDiacritics, removeEmptyPhrases, caps} = this.state;
+    const {input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle, toAddStart, toAddEnd, replace, toReplace, toReplaceWith, removeDiacritics, removeEmptyPhrases, letterCase} = this.state;
 
     const runMod = () => {
-      let phrasesArray = input.split(divider);
+      // Replace characters
+      const inputReplaced = input.replace(RegExp(toReplace, 'gi'), toReplaceWith);
 
-      this.setState({output: phrasesArray.join(connector)});
+      // Cut the input to single phrases (stored in an array) using the divider
+      let phrasesArray = inputReplaced.split(divider);
+      let elementsToRemove = [];
+
+      for(let i = 0; i < phrasesArray.length; i++) {
+        // Remove entire string from start/end
+        const toRemoveStartRegex = new RegExp('^' + toRemoveStartEnd,'gi');
+        const toRemoveEndRegex = new RegExp(toRemoveStartEnd + '$', 'gi');
+        phrasesArray[i] = phrasesArray[i].replace(toRemoveStartRegex, '');
+        phrasesArray[i] = phrasesArray[i].replace(toRemoveEndRegex, '');
+
+        // Remove entire string from phrase
+        const toRemoveEntireStringRegex = new RegExp(toRemoveEntireString,'gi');
+        phrasesArray[i] = phrasesArray[i].replace(toRemoveEntireStringRegex, '');
+
+        // Remove single characters from phrase
+        const toRemoveEntireSingleArray = toRemoveEntireSingle.split('');
+        for(let j = 0; j < toRemoveEntireSingleArray.length; j++) {
+          phrasesArray[i] = phrasesArray[i].replace(toRemoveEntireSingleArray[j], '');
+        }
+
+        // Add entire string to start/end
+        phrasesArray[i] = toAddStart + phrasesArray[i] + toAddEnd;
+
+        // Save indexes of empty elements to an array (to remove them later)
+        if(removeEmptyPhrases) {
+          if(phrasesArray[i] === '' || !phrasesArray[i]) {
+            elementsToRemove.push(i);
+          }
+        }
+      }
+
+      // Remove empty phrases (by saved earlier indexes - starting from the end)
+      if(removeEmptyPhrases) {
+        for(let i = elementsToRemove.length - 1; i >= 0; i--) {
+          phrasesArray = phrasesArray.splice(elementsToRemove[i]);
+        }
+      }
+
+      let currentOutput = phrasesArray.join(connector);
+
+      // Letter case
+      if(letterCase === 'letterCase-0') {
+        currentOutput = currentOutput.toUpperCase();
+      } else if(letterCase === 'letterCase-1') {
+        currentOutput = currentOutput.toLowerCase();
+      }
+
+      this.setState({output: currentOutput});
     }
 
     return (
@@ -60,12 +111,16 @@ class App extends Component {
             updateToAddEnd={(toAddEnd => this.setState({toAddEnd}))}
             replace={replace}
             updateReplace={(replace => this.setState({replace}))}
+            toReplace={toReplace}
+            updateToReplace={(toReplace => this.setState({toReplace}))}
+            toReplaceWith={toReplaceWith}
+            updateToReplaceWith={(toReplaceWith => this.setState({toReplaceWith}))}
             removeDiacritics={removeDiacritics}
             updateRemoveDiacritics={(removeDiacritics => this.setState({removeDiacritics}))}
             removeEmptyPhrases={removeEmptyPhrases}
             updateRemoveEmptyPhrases={(removeEmptyPhrases => this.setState({removeEmptyPhrases}))}
-            caps={caps}
-            updateCaps={(caps => this.setState({caps}))} />
+            letterCase={letterCase}
+            updateLetterCase={(letterCase => this.setState({letterCase}))} />
           <ContainerOutputTrigger
             output={output}
             updateOutput={(output => this.setState({output}))}
