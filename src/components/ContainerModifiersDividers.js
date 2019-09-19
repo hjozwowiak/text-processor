@@ -8,10 +8,12 @@ const ContainerModifiersDividers = ({divider, updateDivider, connector, updateCo
             <TextArea
                 targetClasses={['input--textarea-medium','container-borderRoundTopLeftMedium','container-borderRoundBottomLeftMedium']}
                 divider={divider}
+                placeholder='Divider'
                 callbackValue={updateDivider} />
             <TextArea
                 targetClasses={['input--textarea-medium','container-borderRoundTopRightMedium','container-borderRoundBottomRightMedium']}
                 connector={connector}
+                placeholder='Connector'
                 callbackValue={updateConnector} />
         </div>
     )

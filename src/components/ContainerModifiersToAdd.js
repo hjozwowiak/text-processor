@@ -8,10 +8,12 @@ const ContainerModifiersToAdd = ({toAddStart, updateToAddStart, toAddEnd, update
             <TextArea
                 targetClasses={['input--textarea-medium','container-borderRoundTopLeftMedium','container-borderRoundBottomLeftMedium']}
                 toAddStart={toAddStart}
+                placeholder='Add at the BEGINNING'
                 callbackValue={updateToAddStart} />
             <TextArea
                 targetClasses={['input--textarea-medium','container-borderRoundTopRightMedium','container-borderRoundBottomRightMedium']}
                 toAddEnd={toAddEnd}
+                placeholder='Add at the END'
                 callbackValue={updateToAddEnd} />
         </div>
     )

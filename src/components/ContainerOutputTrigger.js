@@ -10,7 +10,8 @@ const ContainerOutputTrigger = ({output, runMod, undo, redo}) => {
             <div className="container--section">
                 <TextAreaPassive
                     targetClasses={['input--textarea-large','container-borderRoundTopLeftLarge','container-borderRoundTopRightLarge','container-borderRoundBottomRightLarge']}
-                    value={output} />
+                    value={output}
+                    placeholder='Output' />
                 <div className="container--section-button">
                     <Button
                         targetClasses={['input--button']}

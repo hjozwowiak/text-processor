@@ -8,7 +8,7 @@ class TextArea extends Component {
 
     render() {
         const {value} = this.state;
-        const {targetClasses, callbackValue} = this.props;
+        const {targetClasses, callbackValue, placeholder} = this.props;
         let classes = '';
         if(targetClasses) { classes = targetClasses.join(' ') };
 
@@ -29,6 +29,7 @@ class TextArea extends Component {
             <textarea
                 className={classes}
                 value={value}
+                placeholder={placeholder}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 />
@@ -38,7 +39,8 @@ class TextArea extends Component {
 
 TextArea.propTypes = {
     targetClasses: PropTypes.array,
-    callbackValue: PropTypes.func
+    callbackValue: PropTypes.func,
+    placeholder: PropTypes.string
 }
 
 export default TextArea;

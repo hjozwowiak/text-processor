@@ -8,6 +8,7 @@ const ContainerInput = ({input, updateInput}) => {
             <TextArea
                 targetClasses={['input--textarea-large','container-borderRoundTopLeftLarge','container-borderRoundTopRightLarge','container-borderRoundBottomRightLarge','container-borderRoundBottomLeftLarge']}
                 input={input}
+                placeholder='Input'
                 callbackValue={updateInput} />
         </div>
     )

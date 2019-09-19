@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import removeAccents from 'remove-accents';
 // Components
 import ContainerInput from './components/ContainerInput';
 import ContainerModifiers from './components/ContainerModifiers';
@@ -90,6 +91,9 @@ class App extends Component {
       } else if(letterCase === 'letterCase-1') {
         currentOutput = currentOutput.toLowerCase();
       }
+
+      // Remove accents/diacritics
+      currentOutput = removeAccents(currentOutput);
 
       this.setState({output: currentOutput});
     }
