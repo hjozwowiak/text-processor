@@ -13,6 +13,8 @@ library.add(faArrowCircleLeft, faArrowCircleRight);
 
 class App extends Component {
   state = {
+    history: [],
+    revertedHistory: [],
     input: '',
     output: '',
     divider: '',
@@ -31,9 +33,13 @@ class App extends Component {
   };
 
   render() {
-    const {input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle, toAddStart, toAddEnd, replace, toReplace, toReplaceWith, removeDiacritics, removeEmptyPhrases, letterCase} = this.state;
+    const {history, revertedHistory, input, output, divider, connector, toRemoveStartEnd, toRemoveEntireString, toRemoveEntireSingle, toAddStart, toAddEnd, replace, toReplace, toReplaceWith, removeDiacritics, removeEmptyPhrases, letterCase} = this.state;
 
     const runMod = () => {
+      this.setState({history: [...history, output], revertedHistory: []});
+      changeButtonActivity(document.querySelector('.buttonUndo'), 'active');
+      changeButtonActivity(document.querySelector('.buttonRedo'), 'inactive');
+
       // Replace characters
       const inputReplaced = input.replace(RegExp(toReplace, 'gi'), toReplaceWith);
 
@@ -88,6 +94,47 @@ class App extends Component {
       this.setState({output: currentOutput});
     }
 
+    const undo = () => {
+      if(history.length > 0) {
+        let undoHistory = history;
+        let lastUndoHistoryElement = undoHistory.pop();
+        this.setState({
+          output: lastUndoHistoryElement,
+          history: undoHistory,
+          revertedHistory: [...revertedHistory, output] })
+
+          if(undoHistory.length === 0) {
+            changeButtonActivity(document.querySelector('.buttonUndo'), 'inactive');
+          }
+          changeButtonActivity(document.querySelector('.buttonRedo'), 'active');
+      }
+    }
+
+    const redo = () => {
+      if(revertedHistory.length > 0) {
+        let redoHistory = revertedHistory;
+        let lastRedoHistoryElement = redoHistory.pop();
+        this.setState({
+          output: lastRedoHistoryElement,
+          history: [...history, output],
+          revertedHistory: redoHistory
+        })
+
+        if(redoHistory.length === 0) {
+          changeButtonActivity(document.querySelector('.buttonRedo'), 'inactive');
+        }
+        changeButtonActivity(document.querySelector('.buttonUndo'), 'active');
+      }
+    }
+
+    const changeButtonActivity = (element, state) => {
+      if(state === 'active' && element.classList.contains('input--button-inactive')) {
+        element.classList.remove('input--button-inactive');
+      } else if(state === 'inactive' && !element.classList.contains('input--button-inactive')) {
+        element.classList.add('input--button-inactive');
+      }
+    }
+
     return (
       <div className='container--app'>
         <div className='container-directionColumn container--app-content'>
@@ -124,7 +171,9 @@ class App extends Component {
           <ContainerOutputTrigger
             output={output}
             updateOutput={(output => this.setState({output}))}
-            runMod={runMod} />
+            runMod={runMod}
+            undo={undo}
+            redo={redo} />
         </div>
       </div>
     );

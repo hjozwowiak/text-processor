@@ -20,6 +20,7 @@ class TextArea extends Component {
         const handleKeyDown = event => {
             if(event.key === 'Tab') {
                 event.preventDefault();
+                if(callbackValue) {callbackValue(value.substring(0, event.target.selectionStart) + '\t' + value.substring(event.target.selectionEnd))};
                 this.setState({value: value.substring(0, event.target.selectionStart) + '\t' + value.substring(event.target.selectionEnd)})
             }
         }

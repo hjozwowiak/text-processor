@@ -4,7 +4,7 @@ import TextAreaPassive from './TextAreaPassive';
 import Button from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const ContainerOutputTrigger = ({output, runMod}) => {
+const ContainerOutputTrigger = ({output, runMod, undo, redo}) => {
     return(
         <div className='container--row'>
             <div className="container--section">
@@ -17,11 +17,13 @@ const ContainerOutputTrigger = ({output, runMod}) => {
                         description='convert'
                         trigger={runMod} />
                     <Button
-                        targetClasses={['input--button','input--button-inactive']}
-                        description={<FontAwesomeIcon icon="arrow-circle-left" />} />
+                        targetClasses={['buttonUndo', 'input--button','input--button-inactive']}
+                        description={<FontAwesomeIcon icon="arrow-circle-left" />}
+                        trigger={undo} />
                     <Button
-                        targetClasses={['input--button','input--button-inactive','container-borderRoundTopRightSmall']}
-                        description={<FontAwesomeIcon icon="arrow-circle-right" />} />
+                        targetClasses={['buttonRedo', 'input--button','input--button-inactive','container-borderRoundTopRightSmall']}
+                        description={<FontAwesomeIcon icon="arrow-circle-right" />}
+                        trigger={redo} />
                 </div>
             </div>
         </div>
@@ -30,7 +32,9 @@ const ContainerOutputTrigger = ({output, runMod}) => {
 
 ContainerOutputTrigger.propTypes = {
     output: PropTypes.string,
-    runMod: PropTypes.func
+    runMod: PropTypes.func,
+    undo: PropTypes.func,
+    redo: PropTypes.func
 }
 
 export default ContainerOutputTrigger;
