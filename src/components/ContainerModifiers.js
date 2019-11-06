@@ -1,33 +1,63 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ContainerModifiersDividers from './ContainerModifiersDividers';
-import ContainerModifiersToRemove from './ContainerModifiersToRemove';
-import ContainerModifiersInputs from './ContainerModifiersInputs';
-import ContainerModifiersToAdd from './ContainerModifiersToAdd';
+import React from "react";
+import PropTypes from "prop-types";
+import ContainerModifiersDividers from "./ContainerModifiersDividers";
+import ContainerModifiersToRemove from "./ContainerModifiersToRemove";
+import ContainerModifiersInputs from "./ContainerModifiersInputs";
+import ContainerModifiersToAdd from "./ContainerModifiersToAdd";
 
-const ContainerModifiers = ({divider, updateDivider, connector, updateConnector, toRemoveStartEnd, updateToRemoveStartEnd, toRemoveEntireString, updateToRemoveEntireString, toRemoveEntireSingle, updateToRemoveEntireSingle, toAddStart, updateToAddStart, toAddEnd, updateToAddEnd, replace, updateReplace, toReplace, updateToReplace, toReplaceWith, updateToReplaceWith, removeDiacritics, updateRemoveDiacritics, removeEmptyPhrases, updateRemoveEmptyPhrases, letterCase, updateLetterCase}) => {
-    return(
+const ContainerModifiers = ({
+    divider,
+    updateDivider,
+    connector,
+    updateConnector,
+    toRemoveStartEnd,
+    updateToRemoveStartEnd,
+    toRemoveEntireString,
+    updateToRemoveEntireString,
+    toRemoveEntireSingle,
+    updateToRemoveEntireSingle,
+    toAddStart,
+    updateToAddStart,
+    toAddEnd,
+    updateToAddEnd,
+    replace,
+    updateReplace,
+    toReplace,
+    updateToReplace,
+    toReplaceWith,
+    updateToReplaceWith,
+    removeDiacritics,
+    updateRemoveDiacritics,
+    removeEmptyPhrases,
+    updateRemoveEmptyPhrases,
+    letterCase,
+    updateLetterCase
+}) => {
+    return (
         <div className="container--row">
-            <div className='container--column-narrow container-directionColumn'>
+            <div className="container--column-narrow container-directionColumn">
                 <ContainerModifiersDividers
                     divider={divider}
                     updateDivider={updateDivider}
                     connector={connector}
-                    updateConnector={updateConnector} />
+                    updateConnector={updateConnector}
+                />
                 <ContainerModifiersToRemove
                     toRemoveStartEnd={toRemoveStartEnd}
                     updateToRemoveStartEnd={updateToRemoveStartEnd}
                     toRemoveEntireString={toRemoveEntireString}
                     updateToRemoveEntireString={updateToRemoveEntireString}
                     toRemoveEntireSingle={toRemoveEntireSingle}
-                    updateToRemoveEntireSingle={updateToRemoveEntireSingle} />
+                    updateToRemoveEntireSingle={updateToRemoveEntireSingle}
+                />
             </div>
-            <div className='container--column-wide container-directionColumn'>
+            <div className="container--column-wide container-directionColumn">
                 <ContainerModifiersToAdd
                     toAddStart={toAddStart}
                     updateToAddStart={updateToAddStart}
                     toAddEnd={toAddEnd}
-                    updateToAddEnd={updateToAddEnd} />
+                    updateToAddEnd={updateToAddEnd}
+                />
                 <ContainerModifiersInputs
                     replace={replace}
                     updateReplace={updateReplace}
@@ -40,11 +70,12 @@ const ContainerModifiers = ({divider, updateDivider, connector, updateConnector,
                     removeEmptyPhrases={removeEmptyPhrases}
                     updateRemoveEmptyPhrases={updateRemoveEmptyPhrases}
                     letterCase={letterCase}
-                    updateLetterCase={updateLetterCase} />
+                    updateLetterCase={updateLetterCase}
+                />
             </div>
         </div>
-    )
-}
+    );
+};
 
 ContainerModifiers.propTypes = {
     divider: PropTypes.string,
@@ -73,6 +104,6 @@ ContainerModifiers.propTypes = {
     updateRemoveEmptyPhrases: PropTypes.func,
     letterCase: PropTypes.string,
     updateLetterCase: PropTypes.func
-}
+};
 
 export default ContainerModifiers;
