@@ -22,7 +22,7 @@ const ContainerModifiersInputs = ({
     if (replace) {
         hideReplaceTextArea = "";
     } else {
-        hideReplaceTextArea = "hide ";
+        hideReplaceTextArea = "hide";
     }
 
     return (
@@ -42,6 +42,7 @@ const ContainerModifiersInputs = ({
                     ]}
                     value={toReplace}
                     callbackValue={updateToReplace}
+                    placeholder="Replace this"
                 />
                 <TextArea
                     targetClasses={[
@@ -51,6 +52,7 @@ const ContainerModifiersInputs = ({
                     ]}
                     value={toReplaceWith}
                     callbackValue={updateToReplaceWith}
+                    placeholder="With this"
                 />
             </div>
             <InputCheckbox
