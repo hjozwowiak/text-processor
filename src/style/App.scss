@@ -1,6 +1,7 @@
-@import './theme';
+@import "./theme";
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -21,15 +22,12 @@ hr {
     }
 
     &-alignCenter {
-    
     }
 
     &-alignLeft {
-    
     }
 
     &-alignRight {
-    
     }
 
     &-borderRoundTopLeftLarge {
@@ -146,9 +144,13 @@ hr {
     &--textarea {
         box-sizing: border-box;
         resize: none;
-        overflow: hidden;
+        overflow-y: scroll;
         outline: none;
         width: 100%;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         &-small {
             @extend .input--textarea;
@@ -202,7 +204,8 @@ hr {
         }
     }
 
-    &--checkbox, &--radio {
+    &--checkbox,
+    &--radio {
         margin: 3px;
     }
 }
