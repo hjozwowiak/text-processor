@@ -1,0 +1,35 @@
+@import "../../../utils/constants/styleConstants";
+
+.buttonGroup {
+  position: absolute;
+  bottom: $inputOutputContainerPadding;
+  left: $inputOutputContainerPadding;
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonGroup__button {
+  padding: 10px;
+  height: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #62edff;
+  color: white;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: #3fc6d8;
+  }
+}
+
+.__button--inactive {
+  cursor: default;
+  background-color: #9bf4ff;
+
+  &:hover {
+    @extend .__button--inactive;
+  }
+}
