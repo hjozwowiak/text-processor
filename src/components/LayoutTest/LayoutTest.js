@@ -1,6 +1,7 @@
 import React from "react";
 
 import InputOutputTextarea from "../InputOutputTextarea/InputOutputTextarea";
+import InputGroup from "../InputGroup/InputGroup";
 
 import "./LayoutTest.scss";
 
@@ -15,11 +16,11 @@ const LayoutTest = () => {
         />
         <div className="modifiers">
           <div className="modifiers modifiers__column modifiers__leftColumn">
-            <div className="inputGroup inputGroup--alignRow modifiers__inputGroup">
+            <InputGroup classes="inputGroup--alignRow modifiers__inputGroup">
               <textarea className="__inputText inputGroup__inputText --border-r --rounded-m-bl --rounded-m-tl" />
               <textarea className="__inputText inputGroup__inputText --border-l --rounded-m-tr --rounded-m-br" />
-            </div>
-            <div className="inputGroup inputGroup--alignColumn modifiers__inputGroup">
+            </InputGroup>
+            <InputGroup classes="inputGroup--alignColumn modifiers__inputGroup">
               <input
                 type="text"
                 className="__inputText inputGroup__inputText --border-b --rounded-m-tr --rounded-m-tl"
@@ -32,15 +33,15 @@ const LayoutTest = () => {
                 type="text"
                 className="__inputText inputGroup__inputText --border-t --rounded-m-br --rounded-m-bl"
               ></input>
-            </div>
+            </InputGroup>
           </div>
 
           <div className="modifiers modifiers__column modifiers__rightColumn">
-            <div className="inputGroup inputGroup--alignRow modifiers__inputGroup">
+            <InputGroup classes="inputGroup--alignRow modifiers__inputGroup">
               <textarea className="__inputText inputGroup__inputText --border-r --rounded-m-bl --rounded-m-tl" />
               <textarea className="__inputText inputGroup__inputText --border-l --rounded-m-tr --rounded-m-br" />
-            </div>
-            <div className="inputGroup inputGroup--alignColumn modifiers__inputGroup modifiers__inputGroup--white --rounded-m-tr --rounded-m-br --rounded-m-bl --rounded-m-tl">
+            </InputGroup>
+            <InputGroup classes="inputGroup--alignColumn modifiers__inputGroup modifiers__inputGroup--white --rounded-m-tr --rounded-m-br --rounded-m-bl --rounded-m-tl">
               <div className="inputGroup__inputLine">
                 <input type="checkbox" />
                 <span>Remove diacritics</span>
@@ -52,10 +53,13 @@ const LayoutTest = () => {
               <div className="inputGroup__inputLine">
                 <input type="checkbox" />
                 <span>Replace characters</span>
-                <div className="inputGroupSmall inputGroup--alignRow --rounded-s-tr --rounded-s-br --rounded-s-bl --rounded-s-tl --hidden">
+                <InputGroup
+                  classes="inputGroup--alignRow --rounded-s-tr --rounded-s-br --rounded-s-bl --rounded-s-tl --hidden"
+                  type="small"
+                >
                   <textarea className="__inputText inputGroup__inputTextSmall --border-r --rounded-s-bl --rounded-s-tl" />
                   <textarea className="__inputText inputGroup__inputTextSmall --border-l --rounded-s-tr --rounded-s-br" />
-                </div>
+                </InputGroup>
               </div>
               <hr className="modifiers__separator" />
               <div className="inputGroup__inputLine">
@@ -66,7 +70,7 @@ const LayoutTest = () => {
                 <input type="radio" />
                 <span>Lower case</span>
               </div>
-            </div>
+            </InputGroup>
           </div>
         </div>
 
