@@ -19,4 +19,10 @@ const InputOutputTextarea = ({ type, placeholder, classes }) => {
   );
 };
 
+InputOutputTextarea.propTypes = {
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  classes: PropTypes.string,
+};
+
 export default InputOutputTextarea;
