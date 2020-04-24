@@ -15,4 +15,9 @@ const InputGroup = ({ children, classes, type }) => {
   );
 };
 
+InputGroup.propTypes = {
+  classes: PropTypes.string,
+  type: PropTypes.string,
+};
+
 export default InputGroup;
