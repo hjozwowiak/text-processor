@@ -1,5 +1,5 @@
 .App {
-  background-image: url(/static/media/circles-dark.76b63e5b.png);
+  background-image: url(../../img/circles-dark.png);
   height: 100%;
 }
 
@@ -14,7 +14,51 @@
   display: none !important;
 }
 
+// INPUTS
+
+.__inputText {
+  outline: none;
+  box-sizing: border-box;
+}
+
+.__inputText::-webkit-scrollbar {
+  display: none;
+}
+
+// BORDER
+
+$borderSize: 1.5px;
+
+.--border-t {
+  border: none;
+  border-top: $borderSize solid #282c34;
+  &b {
+    @extend .--border-t;
+    border-bottom: $borderSize solid #282c34;
+  }
+}
+
+.--border-r {
+  border: none;
+  border-right: $borderSize solid #282c34;
+  &l {
+    @extend .--border-r;
+    border-left: $borderSize solid #282c34;
+  }
+}
+
+.--border-b {
+  border: none;
+  border-bottom: $borderSize solid #282c34;
+}
+
+.--border-l {
+  border: none;
+  border-left: $borderSize solid #282c34;
+}
+
 // ROUNDED
+
 $roundSmall: 20px;
 $roundMedium: 26px;
 $roundLarge: 40px;
@@ -65,45 +109,4 @@ $roundLarge: 40px;
 
 .--rounded-l-tl {
   border-top-left-radius: $roundLarge;
-}
-
-// BORDER
-$borderSize: 1.5px;
-
-.--border-t {
-  border: none;
-  border-top: $borderSize solid #282c34;
-  &b {
-    @extend .--border-t;
-    border-bottom: $borderSize solid #282c34;
-  }
-}
-
-.--border-r {
-  border: none;
-  border-right: $borderSize solid #282c34;
-  &l {
-    @extend .--border-r;
-    border-left: $borderSize solid #282c34;
-  }
-}
-
-.--border-b {
-  border: none;
-  border-bottom: $borderSize solid #282c34;
-}
-
-.--border-l {
-  border: none;
-  border-left: $borderSize solid #282c34;
-}
-
-// INPUT
-.__inputText {
-  outline: none;
-  box-sizing: border-box;
-}
-
-.__inputText::-webkit-scrollbar {
-  display: none;
 }

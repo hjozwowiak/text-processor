@@ -1,20 +1,10 @@
 import React, { Component } from "react";
 import removeAccents from "remove-accents";
-// Components
-import ContainerInput from "./components/ContainerInput";
-import ContainerModifiers from "./components/ContainerModifiers";
-import ContainerOutputTrigger from "./components/ContainerOutputTrigger";
-import LayoutTest from "./components/LayoutTest/LayoutTest";
-// Styles
-import "./style/App.scss";
-// Font Awesome
-import { library } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/react-fontawesome";
-import {
-  faArrowCircleLeft,
-  faArrowCircleRight,
-} from "@fortawesome/free-solid-svg-icons";
-library.add(faArrowCircleLeft, faArrowCircleRight);
+
+import InputOutputTextarea from "../InputOutputTextarea/InputOutputTextarea";
+import Modifiers from "../Modifiers/Modifiers";
+
+import "./App.scss";
 
 class App extends Component {
   state = {
@@ -63,8 +53,14 @@ class App extends Component {
         history: [...history, output],
         revertedHistory: [],
       });
-      changeButtonActivity(document.querySelector(".buttonUndo"), "active");
-      changeButtonActivity(document.querySelector(".buttonRedo"), "inactive");
+      changeButtonActivity(
+        document.querySelector(".buttonGroup__buttonUndo"),
+        "active"
+      );
+      changeButtonActivity(
+        document.querySelector(".buttonGroup__buttonRedo"),
+        "inactive"
+      );
 
       // Replace characters
       const inputReplaced = input.replace(
@@ -149,11 +145,14 @@ class App extends Component {
 
         if (undoHistory.length === 0) {
           changeButtonActivity(
-            document.querySelector(".buttonUndo"),
+            document.querySelector(".buttonGroup__buttonUndo"),
             "inactive"
           );
         }
-        changeButtonActivity(document.querySelector(".buttonRedo"), "active");
+        changeButtonActivity(
+          document.querySelector(".buttonGroup__buttonRedo"),
+          "active"
+        );
       }
     };
 
@@ -169,78 +168,87 @@ class App extends Component {
 
         if (redoHistory.length === 0) {
           changeButtonActivity(
-            document.querySelector(".buttonRedo"),
+            document.querySelector(".buttonGroup__buttonRedo"),
             "inactive"
           );
         }
-        changeButtonActivity(document.querySelector(".buttonUndo"), "active");
+        changeButtonActivity(
+          document.querySelector(".buttonGroup__buttonUndo"),
+          "active"
+        );
       }
     };
 
     const changeButtonActivity = (element, state) => {
       if (
         state === "active" &&
-        element.classList.contains("input--button-inactive")
+        element.classList.contains("__button--inactive")
       ) {
-        element.classList.remove("input--button-inactive");
+        element.classList.remove("__button--inactive");
       } else if (
         state === "inactive" &&
-        !element.classList.contains("input--button-inactive")
+        !element.classList.contains("__button--inactive")
       ) {
-        element.classList.add("input--button-inactive");
+        element.classList.add("__button--inactive");
       }
     };
 
     return (
-      <div className="container--app">
-        <div className="container-directionColumn container--app-content">
-          <ContainerInput
-            input={input}
-            updateInput={(value) => this.setState({ input: value })}
+      <div className="App">
+        <div className="appContainer">
+          <InputOutputTextarea
+            type="input"
+            placeholder="Input"
+            classes="--rounded-l-tr --rounded-l-bl --rounded-l-tl"
+            value={input}
+            newValue={(value) => this.setState({ input: value })}
           />
-          <ContainerModifiers
+          <Modifiers
             divider={divider}
-            updateDivider={(divider) => this.setState({ divider })}
+            newDivider={(divider) => this.setState({ divider })}
             connector={connector}
-            updateConnector={(connector) => this.setState({ connector })}
+            newConnector={(connector) => this.setState({ connector })}
             toRemoveStartEnd={toRemoveStartEnd}
-            updateToRemoveStartEnd={(toRemoveStartEnd) =>
+            newToRemoveStartEnd={(toRemoveStartEnd) =>
               this.setState({ toRemoveStartEnd })
             }
             toRemoveEntireString={toRemoveEntireString}
-            updateToRemoveEntireString={(toRemoveEntireString) =>
+            newToRemoveEntireString={(toRemoveEntireString) =>
               this.setState({ toRemoveEntireString })
             }
             toRemoveEntireSingle={toRemoveEntireSingle}
-            updateToRemoveEntireSingle={(toRemoveEntireSingle) =>
+            newToRemoveEntireSingle={(toRemoveEntireSingle) =>
               this.setState({ toRemoveEntireSingle })
             }
             toAddStart={toAddStart}
-            updateToAddStart={(toAddStart) => this.setState({ toAddStart })}
+            newToAddStart={(toAddStart) => this.setState({ toAddStart })}
             toAddEnd={toAddEnd}
-            updateToAddEnd={(toAddEnd) => this.setState({ toAddEnd })}
-            replace={replace}
-            updateReplace={(replace) => this.setState({ replace })}
-            toReplace={toReplace}
-            updateToReplace={(toReplace) => this.setState({ toReplace })}
-            toReplaceWith={toReplaceWith}
-            updateToReplaceWith={(toReplaceWith) =>
-              this.setState({ toReplaceWith })
-            }
+            newToAddEnd={(toAddEnd) => this.setState({ toAddEnd })}
             removeDiacritics={removeDiacritics}
-            updateRemoveDiacritics={(removeDiacritics) =>
+            newRemoveDiacritics={(removeDiacritics) =>
               this.setState({ removeDiacritics })
             }
             removeEmptyPhrases={removeEmptyPhrases}
-            updateRemoveEmptyPhrases={(removeEmptyPhrases) =>
+            newRemoveEmptyPhrases={(removeEmptyPhrases) =>
               this.setState({ removeEmptyPhrases })
             }
+            replace={replace}
+            updateReplace={(replace) => this.setState({ replace })}
+            toReplace={toReplace}
+            newToReplace={(toReplace) => this.setState({ toReplace })}
+            toReplaceWith={toReplaceWith}
+            newToReplaceWith={(toReplaceWith) =>
+              this.setState({ toReplaceWith })
+            }
             letterCase={letterCase}
-            updateLetterCase={(letterCase) => this.setState({ letterCase })}
+            newLetterCase={(letterCase) => this.setState({ letterCase })}
           />
-          <ContainerOutputTrigger
-            output={output}
-            updateOutput={(output) => this.setState({ output })}
+          <InputOutputTextarea
+            type="output"
+            placeholder="Output"
+            classes="--rounded-l-tr --rounded-s-bl --rounded-l-tl"
+            value={output}
+            newValue={(output) => this.setState({ output })}
             runMod={runMod}
             undo={undo}
             redo={redo}
