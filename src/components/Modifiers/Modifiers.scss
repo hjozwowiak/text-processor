@@ -1,0 +1,34 @@
+.modifiers {
+  display: flex;
+  flex-direction: row;
+}
+
+.modifiers__column {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modifiers__firstColumn {
+  width: 40%;
+}
+
+.modifiers__secondColumn {
+  width: 60%;
+}
+
+.modifiers__inputGroup {
+  margin-top: 24px;
+}
+
+.modifiers__inputGroup:first-child {
+  margin-top: 0px;
+}
+
+.modifiers__inputGroup--white {
+  background-color: #fff;
+}
+
+.modifiers__separator {
+  width: 90%;
+}

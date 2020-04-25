@@ -1,0 +1,112 @@
+.App {
+  background-image: url(../../img/circles-dark.png);
+  height: 100%;
+}
+
+.appContainer {
+  background-color: #282c34;
+  width: 800px;
+  margin: auto;
+  height: 100vh;
+}
+
+.--hidden {
+  display: none !important;
+}
+
+// INPUTS
+
+.__inputText {
+  outline: none;
+  box-sizing: border-box;
+}
+
+.__inputText::-webkit-scrollbar {
+  display: none;
+}
+
+// BORDER
+
+$borderSize: 1.5px;
+
+.--border-t {
+  border: none;
+  border-top: $borderSize solid #282c34;
+  &b {
+    @extend .--border-t;
+    border-bottom: $borderSize solid #282c34;
+  }
+}
+
+.--border-r {
+  border: none;
+  border-right: $borderSize solid #282c34;
+  &l {
+    @extend .--border-r;
+    border-left: $borderSize solid #282c34;
+  }
+}
+
+.--border-b {
+  border: none;
+  border-bottom: $borderSize solid #282c34;
+}
+
+.--border-l {
+  border: none;
+  border-left: $borderSize solid #282c34;
+}
+
+// ROUNDED
+
+$roundSmall: 20px;
+$roundMedium: 26px;
+$roundLarge: 40px;
+
+.--rounded-s-tr {
+  border-top-right-radius: $roundSmall;
+}
+
+.--rounded-s-br {
+  border-bottom-right-radius: $roundSmall;
+}
+
+.--rounded-s-bl {
+  border-bottom-left-radius: $roundSmall;
+}
+
+.--rounded-s-tl {
+  border-top-left-radius: $roundSmall;
+}
+
+.--rounded-m-tr {
+  border-top-right-radius: $roundMedium;
+}
+
+.--rounded-m-br {
+  border-bottom-right-radius: $roundMedium;
+}
+
+.--rounded-m-bl {
+  border-bottom-left-radius: $roundMedium;
+}
+
+.--rounded-m-tl {
+  border-top-left-radius: $roundMedium;
+}
+
+.--rounded-l-tr {
+  border-top-right-radius: $roundLarge;
+}
+
+.--rounded-l-br {
+  border-bottom-right-radius: $roundLarge;
+}
+
+.--rounded-l-bl {
+  border-bottom-left-radius: $roundLarge;
+}
+
+.--rounded-l-tl {
+  border-top-left-radius: $roundLarge;
+}
